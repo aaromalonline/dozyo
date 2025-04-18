@@ -47,15 +47,14 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
+    @apply transition-colors duration-300 ease-in-out;
   }
 
   body {
-    @apply bg-background text-foreground antialiased dark:bg-[#1a1a1b];
+    @apply bg-background text-foreground antialiased 
+           dark:bg-dark-background dark:text-dark-foreground;
   }
 }
 

@@ -86,12 +86,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-dark-background">
       <Header />
       
       <main className="flex-grow container mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Available Gigs</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-dark-foreground">Available Gigs</h2>
           <LocationSelector 
             currentLocation={currentLocation}
             onLocationChange={handleLocationChange}
@@ -111,9 +111,9 @@ const Index = () => {
                 />
               ))
             ) : (
-              <div className="bg-white border rounded-lg p-8 text-center">
-                <h3 className="text-lg font-medium text-gray-800 mb-2">No gigs found</h3>
-                <p className="text-gray-600">
+              <div className="bg-white dark:bg-dark-card border dark:border-dark-border rounded-lg p-8 text-center">
+                <h3 className="text-lg font-medium text-gray-800 dark:text-dark-foreground mb-2">No gigs found</h3>
+                <p className="text-gray-600 dark:text-gray-400">
                   Try adjusting your filters or check back later for new opportunities.
                 </p>
               </div>
@@ -121,8 +121,8 @@ const Index = () => {
           </div>
           
           <div className="space-y-6">
-            <div className="bg-white border rounded-lg p-4 shadow-sm">
-              <h3 className="font-semibold text-gray-800 mb-3">Featured Gig Posters</h3>
+            <div className="bg-white dark:bg-dark-card border dark:border-dark-border rounded-lg p-4 shadow-sm">
+              <h3 className="font-semibold text-gray-800 dark:text-dark-foreground mb-3">Featured Gig Posters</h3>
               <div className="space-y-4">
                 {users
                   .filter(user => user.type === "institution")
@@ -133,8 +133,8 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="bg-white border rounded-lg p-4 shadow-sm">
-              <h3 className="font-semibold text-gray-800 mb-3">How It Works</h3>
+            <div className="bg-white dark:bg-dark-card border dark:border-dark-border rounded-lg p-4 shadow-sm">
+              <h3 className="font-semibold text-gray-800 dark:text-dark-foreground mb-3">How It Works</h3>
               <div className="space-y-3">
                 <div className="flex items-start">
                   <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
