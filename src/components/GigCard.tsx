@@ -1,3 +1,4 @@
+
 import { Gig } from "@/lib/types";
 import { format } from "date-fns";
 import { ArrowUpIcon, CalendarIcon, Clock, DollarSign, MapPin, MessageSquare, ShareIcon } from "lucide-react";
@@ -75,51 +76,52 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
                 : getRemainingSpots() === 0 
                   ? "Full" 
                   : "Join"}
-          </Button>
-        </div>
+            </Button>
+          </div>
 
-        {/* Description */}
-        <div className="space-y-2">
-          <p className={`text-sm text-muted-foreground dark:text-gray-300 ${!isExpanded ? "line-clamp-2" : ""}`}>
-            {gig.description}
-          </p>
-          {gig.description.length > 100 && (
-            <button 
-              className="text-xs text-gig-purple hover:underline dark:text-gig-light-purple"
-              onClick={() => setIsExpanded(!isExpanded)}
-            >
-              {isExpanded ? "Show less" : "Show more"}
-            </button>
-          )}
-        </div>
+          {/* Description */}
+          <div className="space-y-2">
+            <p className={`text-sm text-muted-foreground dark:text-gray-300 ${!isExpanded ? "line-clamp-2" : ""}`}>
+              {gig.description}
+            </p>
+            {gig.description.length > 100 && (
+              <button 
+                className="text-xs text-gig-purple hover:underline dark:text-gig-light-purple"
+                onClick={() => setIsExpanded(!isExpanded)}
+              >
+                {isExpanded ? "Show less" : "Show more"}
+              </button>
+            )}
+          </div>
 
-        {/* Footer */}
-        <div className="flex items-center gap-4 mt-3 text-muted-foreground dark:text-gray-400">
-          <div className="flex items-center gap-1.5 text-xs">
-            <CalendarIcon className="h-3 w-3" />
-            <span>{formatDate(gig.date)}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-xs">
-            <MapPin className="h-3 w-3" />
-            <span>{gig.location}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-xs">
-            <Clock className="h-3 w-3" />
-            <span>{gig.duration}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-xs">
-            <DollarSign className="h-3 w-3" />
-            <span>${gig.payment_amount}</span>
-          </div>
-          <div className="ml-auto flex items-center gap-3">
-            <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
-              <MessageSquare className="h-3 w-3" />
-              <span>Contact</span>
-            </button>
-            <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
-              <ShareIcon className="h-3 w-3" />
-              <span>Share</span>
-            </button>
+          {/* Footer */}
+          <div className="flex items-center gap-4 mt-3 text-muted-foreground dark:text-gray-400">
+            <div className="flex items-center gap-1.5 text-xs">
+              <CalendarIcon className="h-3 w-3" />
+              <span>{formatDate(gig.date)}</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-xs">
+              <MapPin className="h-3 w-3" />
+              <span>{gig.location}</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-xs">
+              <Clock className="h-3 w-3" />
+              <span>{gig.duration}</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-xs">
+              <DollarSign className="h-3 w-3" />
+              <span>${gig.payment_amount}</span>
+            </div>
+            <div className="ml-auto flex items-center gap-3">
+              <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
+                <MessageSquare className="h-3 w-3" />
+                <span>Contact</span>
+              </button>
+              <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
+                <ShareIcon className="h-3 w-3" />
+                <span>Share</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -128,3 +130,4 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
 };
 
 export default GigCard;
+
