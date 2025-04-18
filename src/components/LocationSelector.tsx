@@ -18,8 +18,11 @@ const LocationSelector = ({ currentLocation, onLocationChange }: LocationSelecto
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2 text-sm">
-          <MapPin className="h-4 w-4 text-gray-500" />
+        <Button 
+          variant="outline" 
+          className="flex items-center gap-2 text-sm bg-background border-border hover:bg-accent/50"
+        >
+          <MapPin className="h-4 w-4 text-muted-foreground" />
           <span>
             {currentLocation === "all" 
               ? "All Locations" 
@@ -32,7 +35,11 @@ const LocationSelector = ({ currentLocation, onLocationChange }: LocationSelecto
         {locations.map((location) => (
           <DropdownMenuItem 
             key={location.value}
-            className={`cursor-pointer ${currentLocation === location.value ? 'bg-gig-light-purple text-gig-purple font-medium' : ''}`}
+            className={`cursor-pointer ${
+              currentLocation === location.value 
+                ? 'bg-accent text-accent-foreground font-medium' 
+                : ''
+            }`}
             onClick={() => onLocationChange(location.value)}
           >
             {location.label}
