@@ -1,4 +1,3 @@
-
 import { Gig } from "@/lib/types";
 import { format } from "date-fns";
 import { ArrowUpIcon, CalendarIcon, Clock, DollarSign, MapPin, MessageSquare, ShareIcon } from "lucide-react";
@@ -26,7 +25,7 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
   };
   
   return (
-    <Card className="mb-2 bg-white dark:bg-dark-card hover:bg-accent/50 dark:hover:bg-dark-muted/50 transition-colors">
+    <Card className="mb-2 bg-dark-card hover:bg-dark-muted/50 transition-colors">
       <div className="flex border-b dark:border-dark-border">
         {/* Left sidebar with voting */}
         <div className="w-10 bg-muted/20 dark:bg-dark-muted/20 flex flex-col items-center py-2">
@@ -67,7 +66,7 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
             <Button
               variant="outline" 
               size="sm"
-              className="bg-gig-purple hover:bg-gig-dark-purple text-white dark:bg-gig-light-purple dark:hover:bg-gig-dark-purple"
+              className="bg-gig-purple hover:bg-gig-dark-purple text-white"
               disabled={gig.is_closed || getRemainingSpots() === 0}
               onClick={() => onApply(gig.id)}
             >
@@ -75,53 +74,52 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
                 ? "Closed" 
                 : getRemainingSpots() === 0 
                   ? "Full" 
-                  : "I'm In!"}
-            </Button>
-          </div>
+                  : "Join"}
+          </Button>
+        </div>
 
-          {/* Description */}
-          <div className="space-y-2">
-            <p className={`text-sm text-muted-foreground dark:text-gray-300 ${!isExpanded ? "line-clamp-2" : ""}`}>
-              {gig.description}
-            </p>
-            {gig.description.length > 100 && (
-              <button 
-                className="text-xs text-gig-purple hover:underline dark:text-gig-light-purple"
-                onClick={() => setIsExpanded(!isExpanded)}
-              >
-                {isExpanded ? "Show less" : "Show more"}
-              </button>
-            )}
-          </div>
+        {/* Description */}
+        <div className="space-y-2">
+          <p className={`text-sm text-muted-foreground dark:text-gray-300 ${!isExpanded ? "line-clamp-2" : ""}`}>
+            {gig.description}
+          </p>
+          {gig.description.length > 100 && (
+            <button 
+              className="text-xs text-gig-purple hover:underline dark:text-gig-light-purple"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? "Show less" : "Show more"}
+            </button>
+          )}
+        </div>
 
-          {/* Footer */}
-          <div className="flex items-center gap-4 mt-3 text-muted-foreground dark:text-gray-400">
-            <div className="flex items-center gap-1.5 text-xs">
-              <CalendarIcon className="h-3 w-3" />
-              <span>{formatDate(gig.date)}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs">
-              <MapPin className="h-3 w-3" />
-              <span>{gig.location}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs">
-              <Clock className="h-3 w-3" />
-              <span>{gig.duration}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs">
-              <DollarSign className="h-3 w-3" />
-              <span>${gig.payment_amount}</span>
-            </div>
-            <div className="ml-auto flex items-center gap-3">
-              <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
-                <MessageSquare className="h-3 w-3" />
-                <span>Contact</span>
-              </button>
-              <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
-                <ShareIcon className="h-3 w-3" />
-                <span>Share</span>
-              </button>
-            </div>
+        {/* Footer */}
+        <div className="flex items-center gap-4 mt-3 text-muted-foreground dark:text-gray-400">
+          <div className="flex items-center gap-1.5 text-xs">
+            <CalendarIcon className="h-3 w-3" />
+            <span>{formatDate(gig.date)}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <MapPin className="h-3 w-3" />
+            <span>{gig.location}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <Clock className="h-3 w-3" />
+            <span>{gig.duration}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <DollarSign className="h-3 w-3" />
+            <span>${gig.payment_amount}</span>
+          </div>
+          <div className="ml-auto flex items-center gap-3">
+            <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
+              <MessageSquare className="h-3 w-3" />
+              <span>Contact</span>
+            </button>
+            <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors dark:text-gray-300 dark:hover:text-white">
+              <ShareIcon className="h-3 w-3" />
+              <span>Share</span>
+            </button>
           </div>
         </div>
       </div>

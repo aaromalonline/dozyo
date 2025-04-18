@@ -53,16 +53,14 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased 
-           dark:bg-dark-background dark:text-dark-foreground;
+    @apply bg-dark-background text-white antialiased;
   }
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .logo {

@@ -86,79 +86,79 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-dark-background">
+    <div className="min-h-screen flex flex-col bg-dark-background">
       <Header />
       
-      <main className="flex-grow container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-dark-foreground">Available Gigs</h2>
-          <LocationSelector 
-            currentLocation={currentLocation}
-            onLocationChange={handleLocationChange}
-          />
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="lg:col-span-3">
+      <main className="flex-1">
+        <div className="max-w-[1200px] mx-auto flex gap-6">
+          <div className="flex-1 px-4 py-4">
             <FilterBar onFilterChange={handleFilterChange} />
+            <LocationSelector 
+              currentLocation={currentLocation}
+              onLocationChange={handleLocationChange}
+            />
             
             {filteredGigs.length > 0 ? (
-              filteredGigs.map(gig => (
-                <GigCard 
-                  key={gig.id} 
-                  gig={gig} 
-                  onApply={handleApplyToGig}
-                />
-              ))
+              <div className="mt-4">
+                {filteredGigs.map(gig => (
+                  <GigCard 
+                    key={gig.id} 
+                    gig={gig} 
+                    onApply={handleApplyToGig}
+                  />
+                ))}
+              </div>
             ) : (
-              <div className="bg-white dark:bg-dark-card border dark:border-dark-border rounded-lg p-8 text-center">
-                <h3 className="text-lg font-medium text-gray-800 dark:text-dark-foreground mb-2">No gigs found</h3>
-                <p className="text-gray-600 dark:text-gray-400">
+              <div className="mt-4 bg-dark-card border border-dark-border rounded-lg p-8 text-center">
+                <h3 className="text-lg font-medium mb-2">No gigs found</h3>
+                <p className="text-gray-400">
                   Try adjusting your filters or check back later for new opportunities.
                 </p>
               </div>
             )}
           </div>
           
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-dark-card border dark:border-dark-border rounded-lg p-4 shadow-sm">
-              <h3 className="font-semibold text-gray-800 dark:text-dark-foreground mb-3">Featured Gig Posters</h3>
-              <div className="space-y-4">
-                {users
-                  .filter(user => user.type === "institution")
-                  .map(user => (
-                    <UserProfile key={user.id} user={user} />
-                  ))
-                }
+          <div className="w-80 py-4 pr-4">
+            <div className="space-y-4">
+              <div className="bg-dark-card border border-dark-border rounded-lg p-4">
+                <h3 className="font-semibold mb-3">Featured Gig Posters</h3>
+                <div className="space-y-4">
+                  {users
+                    .filter(user => user.type === "institution")
+                    .map(user => (
+                      <UserProfile key={user.id} user={user} />
+                    ))
+                  }
+                </div>
               </div>
-            </div>
-            
-            <div className="bg-white dark:bg-dark-card border dark:border-dark-border rounded-lg p-4 shadow-sm">
-              <h3 className="font-semibold text-gray-800 dark:text-dark-foreground mb-3">How It Works</h3>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                    <span className="text-gig-purple font-medium text-sm">1</span>
+              
+              <div className="bg-dark-card border border-dark-border rounded-lg p-4">
+                <h3 className="font-semibold mb-3">How It Works</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                      <span className="text-gig-purple font-medium text-sm">1</span>
+                    </div>
+                    <p className="text-sm text-gray-300">Browse available gigs in your area</p>
                   </div>
-                  <p className="text-sm text-gray-700">Browse available gigs in your area</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                    <span className="text-gig-purple font-medium text-sm">2</span>
+                  <div className="flex items-start">
+                    <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                      <span className="text-gig-purple font-medium text-sm">2</span>
+                    </div>
+                    <p className="text-sm text-gray-300">Join with a single click</p>
                   </div>
-                  <p className="text-sm text-gray-700">Apply with a single click using "I'm In!"</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                    <span className="text-gig-purple font-medium text-sm">3</span>
+                  <div className="flex items-start">
+                    <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                      <span className="text-gig-purple font-medium text-sm">3</span>
+                    </div>
+                    <p className="text-sm text-gray-300">Get contacted by the gig poster</p>
                   </div>
-                  <p className="text-sm text-gray-700">Get contacted by the gig poster</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                    <span className="text-gig-purple font-medium text-sm">4</span>
+                  <div className="flex items-start">
+                    <div className="bg-gig-light-purple rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                      <span className="text-gig-purple font-medium text-sm">4</span>
+                    </div>
+                    <p className="text-sm text-gray-300">Complete the gig and get paid</p>
                   </div>
-                  <p className="text-sm text-gray-700">Complete the gig and get paid</p>
                 </div>
               </div>
             </div>
