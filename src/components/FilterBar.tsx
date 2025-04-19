@@ -36,13 +36,13 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
   };
 
   return (
-    <div className="bg-white border rounded-lg p-4 mb-6 shadow-sm">
+    <div className="bg-white p-4 mb-6">
       <div className="flex items-center mb-4">
         <Filter className="h-4 w-4 mr-2 text-gray-500" />
         <h3 className="font-semibold text-gray-800">Filter Gigs</h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Type
@@ -51,7 +51,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
             value={activeFilters.type} 
             onValueChange={(value) => handleFilterChange("type", value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
             <SelectContent>
@@ -72,7 +72,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
             value={activeFilters.location} 
             onValueChange={(value) => handleFilterChange("location", value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Select location" />
             </SelectTrigger>
             <SelectContent>
@@ -93,7 +93,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
             value={activeFilters.paymentStatus} 
             onValueChange={(value) => handleFilterChange("paymentStatus", value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
@@ -112,7 +112,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
             value={activeFilters.sortBy} 
             onValueChange={(value) => handleFilterChange("sortBy", value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
