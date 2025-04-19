@@ -1,7 +1,7 @@
 
 import { Gig } from "@/lib/types";
 import { format } from "date-fns";
-import { ArrowUpIcon, CalendarIcon, Clock, DollarSign, MapPin, MessageSquare, ShareIcon } from "lucide-react";
+import { ArrowUpIcon, CalendarIcon, Clock, DollarSign, MapPin, MessageSquare, ShareIcon, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -76,7 +76,7 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
                 ? "Closed" 
                 : getRemainingSpots() === 0 
                   ? "Full" 
-                  : "Join"}
+                  : "Check In"}
             </Button>
           </div>
 
@@ -96,7 +96,11 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center gap-4 mt-3 text-muted-foreground">
+          <div className="flex items-center gap-4 mt-3 text-muted-foreground flex-wrap">
+            <div className="flex items-center gap-1.5 text-xs">
+              <Users className="h-3 w-3" />
+              <span>{gig.applicants_count}/{gig.max_needed} People</span>
+            </div>
             <div className="flex items-center gap-1.5 text-xs">
               <CalendarIcon className="h-3 w-3" />
               <span>{formatDate(gig.date)}</span>
