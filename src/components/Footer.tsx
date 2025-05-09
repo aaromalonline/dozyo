@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold text-gig-purple">
-              GigGrab<span className="text-gig-dark-purple">Hub</span>
+              do<span className="text-gig-dark-purple">zyo</span>
             </h2>
             <p className="text-gray-600 text-sm mt-1">
               Connecting local gig posters with seekers.
@@ -38,7 +38,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-200 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} GigGrabHub. All rights reserved.
+            © {new Date().getFullYear()} dozyo. All rights reserved.
           </p>
           
           <div className="flex space-x-4 mt-4 md:mt-0">
