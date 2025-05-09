@@ -65,20 +65,17 @@ const Index = () => {
 
   // Handle applying to a gig
   const handleApplyToGig = (gigId: string) => {
-    // In a real app, this would send an application to the backend
-    // For now, just show a toast message
     toast.success("Application submitted successfully!", {
       description: "The gig poster will contact you soon.",
     });
     
-    // Update the gig's applicant count
     setGigs(prev => 
       prev.map(gig => 
         gig.id === gigId 
           ? { 
               ...gig, 
               applicants_count: gig.applicants_count + 1,
-              applicant_ids: [...gig.applicant_ids, "current-user"] // In a real app, this would be the current user's ID
+              applicant_ids: [...gig.applicant_ids, "current-user"]
             } 
           : gig
       )
@@ -86,14 +83,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-[#1A1A1A] text-gray-200">
       <Header />
       
       <main className="flex-1 flex">
         {/* Left sidebar */}
-        <div className="w-80 min-h-[calc(100vh-3rem)] border-r bg-card">
-          <div className="p-4 space-y-4 sticky top-12">
-            <div className="space-y-4">
+        <div className="w-64 min-h-[calc(100vh-3.5rem)] border-r border-[#343536] bg-[#1E1E1E]">
+          <div className="p-3 space-y-3 sticky top-12">
+            <div className="space-y-3">
               <FilterBar onFilterChange={handleFilterChange} />
               <LocationSelector 
                 currentLocation={currentLocation}
@@ -101,10 +98,10 @@ const Index = () => {
               />
             </div>
 
-            <div className="space-y-4">
-              <div className="rounded-lg p-4">
-                <h3 className="font-semibold mb-3 text-foreground">Featured Gig Posters</h3>
-                <div className="space-y-4">
+            <div className="space-y-3 pt-2">
+              <div className="rounded-lg p-2">
+                <h3 className="font-semibold mb-2 text-sm text-gray-200">Featured Gig Posters</h3>
+                <div className="space-y-2">
                   {users
                     .filter(user => user.type === "institution")
                     .map(user => (
@@ -114,32 +111,32 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="rounded-lg p-4">
-                <h3 className="font-semibold mb-3 text-foreground">How It Works</h3>
-                <div className="space-y-3">
+              <div className="rounded-lg p-2">
+                <h3 className="font-semibold mb-2 text-sm text-gray-200">How It Works</h3>
+                <div className="space-y-2">
                   <div className="flex items-start">
-                    <div className="bg-secondary rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                      <span className="text-secondary-foreground font-medium text-sm">1</span>
+                    <div className="bg-[#272729] rounded-full w-5 h-5 flex items-center justify-center mr-2">
+                      <span className="text-gray-300 font-medium text-xs">1</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Browse available gigs in your area</p>
+                    <p className="text-xs text-gray-400">Browse available gigs in your area</p>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-secondary rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                      <span className="text-secondary-foreground font-medium text-sm">2</span>
+                    <div className="bg-[#272729] rounded-full w-5 h-5 flex items-center justify-center mr-2">
+                      <span className="text-gray-300 font-medium text-xs">2</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Join with a single click</p>
+                    <p className="text-xs text-gray-400">Join with a single click</p>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-secondary rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                      <span className="text-secondary-foreground font-medium text-sm">3</span>
+                    <div className="bg-[#272729] rounded-full w-5 h-5 flex items-center justify-center mr-2">
+                      <span className="text-gray-300 font-medium text-xs">3</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Get contacted by the gig poster</p>
+                    <p className="text-xs text-gray-400">Get contacted by the gig poster</p>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-secondary rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
-                      <span className="text-secondary-foreground font-medium text-sm">4</span>
+                    <div className="bg-[#272729] rounded-full w-5 h-5 flex items-center justify-center mr-2">
+                      <span className="text-gray-300 font-medium text-xs">4</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Complete the gig and get paid</p>
+                    <p className="text-xs text-gray-400">Complete the gig and get paid</p>
                   </div>
                 </div>
               </div>
@@ -148,7 +145,7 @@ const Index = () => {
         </div>
 
         {/* Main content */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-3">
           {filteredGigs.length > 0 ? (
             <div className="space-y-2">
               {filteredGigs.map(gig => (
@@ -160,9 +157,9 @@ const Index = () => {
               ))}
             </div>
           ) : (
-            <div className="bg-card border rounded-lg p-8 text-center">
-              <h3 className="text-lg font-medium mb-2 text-foreground">No gigs found</h3>
-              <p className="text-muted-foreground">
+            <div className="bg-[#1E1E1E] border border-[#343536] rounded-lg p-6 text-center">
+              <h3 className="text-base font-medium mb-2 text-gray-200">No gigs found</h3>
+              <p className="text-sm text-gray-400">
                 Try adjusting your filters or check back later for new opportunities.
               </p>
             </div>

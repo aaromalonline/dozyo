@@ -1,7 +1,7 @@
 
 import { Gig } from "@/lib/types";
 import { format } from "date-fns";
-import { ArrowUpIcon, CalendarIcon, Clock, DollarSign, MapPin, MessageSquare, ShareIcon, Users } from "lucide-react";
+import { ArrowUpIcon, CalendarIcon, Clock, DollarSign, MapPin, MessageSquare, ShareIcon, Users, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -24,19 +24,25 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
   const getRemainingSpots = () => {
     return gig.max_needed - gig.applicants_count;
   };
+
+  // Check if poster is an institution (for verified badge)
+  const isPosterInstitution = gig.poster_name.includes("University") || 
+                             gig.poster_name.includes("College") || 
+                             gig.poster_name.includes("Institute") ||
+                             gig.poster_name.includes("School");
   
   return (
-    <Card className="mb-2 bg-card hover:bg-accent/50 transition-colors">
-      <div className="flex border-b">
+    <Card className="mb-2 bg-[#1E1E1E] border-[#343536] hover:bg-[#272729] transition-colors">
+      <div className="flex border-b border-[#343536]">
         {/* Left sidebar with voting */}
-        <div className="w-10 bg-muted/20 flex flex-col items-center py-2">
+        <div className="w-10 bg-[#1A1A1A]/50 flex flex-col items-center py-2">
           <button 
             onClick={() => setUpvotes(prev => prev + 1)}
-            className="text-muted-foreground hover:text-primary transition-colors"
+            className="text-gray-400 hover:text-gig-purple transition-colors"
           >
             <ArrowUpIcon className="h-4 w-4" />
           </button>
-          <span className="text-sm font-medium my-1">{upvotes}</span>
+          <span className="text-sm font-medium my-1 text-gray-300">{upvotes}</span>
         </div>
 
         {/* Main content */}
@@ -50,25 +56,30 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
                   className={cn(
                     "px-1.5 py-0.5 text-xs",
                     gig.payment_status === "secured" 
-                      ? "bg-green-100 text-green-700 hover:bg-green-200" 
-                      : "bg-yellow-100 text-yellow-700 hover:bg-yellow-200"
+                      ? "bg-green-900/30 text-green-400 hover:bg-green-900/40" 
+                      : "bg-yellow-900/30 text-yellow-400 hover:bg-yellow-900/40"
                   )}
                 >
                   {gig.payment_status === "secured" ? "💰 Secured" : "⚠️ Pending"}
                 </Badge>
-                <Badge variant="outline" className="px-1.5 py-0.5 text-xs capitalize">
+                <Badge variant="outline" className="px-1.5 py-0.5 text-xs capitalize bg-[#272729] border-[#343536] text-gray-300">
                   {gig.type}
                 </Badge>
               </div>
-              <h3 className="text-base font-medium mt-1">{gig.title}</h3>
-              <p className="text-xs text-muted-foreground">
+              <div className="flex items-center mt-1">
+                <h3 className="text-sm font-medium text-gray-100">{gig.title}</h3>
+                {isPosterInstitution && (
+                  <CheckCircle className="h-3.5 w-3.5 ml-1.5 text-gig-purple" />
+                )}
+              </div>
+              <p className="text-xs text-gray-400">
                 Posted by {gig.poster_name} • {format(gig.createdAt, "MMM dd")}
               </p>
             </div>
             <Button
               variant="secondary" 
               size="sm"
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-gig-purple text-white hover:bg-gig-dark-purple h-7 text-xs"
               disabled={gig.is_closed || getRemainingSpots() === 0}
               onClick={() => onApply(gig.id)}
             >
@@ -82,12 +93,12 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
 
           {/* Description */}
           <div className="space-y-2">
-            <p className={`text-sm text-foreground ${!isExpanded ? "line-clamp-2" : ""}`}>
+            <p className={`text-xs text-gray-300 ${!isExpanded ? "line-clamp-2" : ""}`}>
               {gig.description}
             </p>
             {gig.description.length > 100 && (
               <button 
-                className="text-xs text-primary hover:underline"
+                className="text-xs text-gig-purple hover:underline"
                 onClick={() => setIsExpanded(!isExpanded)}
               >
                 {isExpanded ? "Show less" : "Show more"}
@@ -96,14 +107,14 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center gap-4 mt-3 text-muted-foreground flex-wrap">
+          <div className="flex items-center gap-3 mt-3 text-gray-400 flex-wrap">
             <div className="flex items-center gap-1.5 text-xs">
               <Users className="h-3 w-3" />
-              <span>{gig.applicants_count}/{gig.max_needed} People</span>
+              <span>{gig.applicants_count}/{gig.max_needed}</span>
             </div>
             <div className="flex items-center gap-1.5 text-xs">
               <CalendarIcon className="h-3 w-3" />
-              <span>{formatDate(gig.date)}</span>
+              <span>{format(gig.date, "MMM dd")}</span>
             </div>
             <div className="flex items-center gap-1.5 text-xs">
               <MapPin className="h-3 w-3" />
@@ -118,11 +129,11 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
               <span>${gig.payment_amount}</span>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors">
+              <button className="flex items-center gap-1 text-xs hover:text-gig-purple transition-colors">
                 <MessageSquare className="h-3 w-3" />
                 <span>Contact</span>
               </button>
-              <button className="flex items-center gap-1 text-xs hover:text-primary transition-colors">
+              <button className="flex items-center gap-1 text-xs hover:text-gig-purple transition-colors">
                 <ShareIcon className="h-3 w-3" />
                 <span>Share</span>
               </button>
