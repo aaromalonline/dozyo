@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { PlusCircle, Search, User, History, MessageCircle, Compass } from "lucide-react";
+import { PlusCircle, Search, User, History, MessageCircle, Compass, Info } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import CreateGigForm from "./CreateGigForm";
@@ -27,23 +27,27 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-xs text-gray-300 hover:text-white hover:bg-[#272729]"
-          >
-            <History className="mr-1 h-3.5 w-3.5" />
-            History
-          </Button>
-          
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-xs text-gray-300 hover:text-white hover:bg-[#272729]"
-          >
-            <MessageCircle className="mr-1 h-3.5 w-3.5" />
-            Chats
-          </Button>
+          {isLoggedIn && (
+            <>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs text-gray-300 hover:text-white hover:bg-[#272729]"
+              >
+                <History className="mr-1 h-3.5 w-3.5" />
+                History
+              </Button>
+              
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs text-gray-300 hover:text-white hover:bg-[#272729]"
+              >
+                <MessageCircle className="mr-1 h-3.5 w-3.5" />
+                Chats
+              </Button>
+            </>
+          )}
           
           <Button
             variant="ghost"
@@ -52,6 +56,15 @@ const Header = () => {
           >
             <Compass className="mr-1 h-3.5 w-3.5" />
             Explore
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-xs text-gray-300 hover:text-white hover:bg-[#272729]"
+          >
+            <Info className="mr-1 h-3.5 w-3.5" />
+            About
           </Button>
         </nav>
 
