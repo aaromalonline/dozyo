@@ -10,13 +10,13 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 h-14 bg-[#1A1A1A] z-10 border-b border-[#343536]">
-      <div className="h-full flex items-center px-4 gap-4">
+      <div className="h-full container max-w-7xl mx-auto px-4 flex items-center gap-4">
         <h1 className="text-xl font-bold text-white whitespace-nowrap flex items-center gap-1">
           GigGrab<span className="text-gig-purple">Hub</span>
         </h1>
 
-        <div className="flex-1 max-w-[500px]">
-          <div className="relative">
+        <div className="flex-1 flex justify-center max-w-[500px] mx-auto">
+          <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-3.5 w-3.5 text-gray-400 pointer-events-none" />
             <input
               type="text"

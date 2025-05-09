@@ -49,10 +49,10 @@ const UserProfile = ({ user }: UserProfileProps) => {
           </div>
           <Badge 
             variant="outline" 
-            className={user.type === "institution" 
-              ? "bg-gig-light-purple text-gig-purple text-xs border-gig-purple/20" 
-              : "bg-[#272729] text-gray-300 text-xs border-[#343536]"
-            }
+            className={`${user.type === "institution" 
+              ? "bg-gig-light-purple text-gig-purple border-gig-purple/20" 
+              : "bg-[#272729] text-gray-300 border-[#343536]"
+            } text-xs px-1.5 truncate max-w-[80px]`}
           >
             {user.type === "institution" ? "Institution" : "Individual"}
           </Badge>

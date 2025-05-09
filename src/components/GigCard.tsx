@@ -26,10 +26,11 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
   };
 
   // Check if poster is an institution (for verified badge)
-  const isPosterInstitution = gig.poster_name.includes("University") || 
-                             gig.poster_name.includes("College") || 
-                             gig.poster_name.includes("Institute") ||
-                             gig.poster_name.includes("School");
+  const isPosterVerified = gig.poster_name.includes("University") || 
+                          gig.poster_name.includes("College") || 
+                          gig.poster_name.includes("Institute") ||
+                          gig.poster_name.includes("School") ||
+                          gig.poster_name.includes("Society");
   
   return (
     <Card className="mb-2 bg-[#1E1E1E] border-[#343536] hover:bg-[#272729] transition-colors">
@@ -68,7 +69,7 @@ const GigCard = ({ gig, onApply }: GigCardProps) => {
               </div>
               <div className="flex items-center mt-1">
                 <h3 className="text-sm font-medium text-gray-100">{gig.title}</h3>
-                {isPosterInstitution && (
+                {isPosterVerified && (
                   <CheckCircle className="h-3.5 w-3.5 ml-1.5 text-gig-purple" />
                 )}
               </div>

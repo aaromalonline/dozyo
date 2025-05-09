@@ -36,27 +36,27 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
   };
 
   return (
-    <div className="bg-white p-4 mb-6">
+    <div className="bg-[#1E1E1E] border border-[#343536] rounded-md p-4 mb-6">
       <div className="flex items-center mb-4">
-        <Filter className="h-4 w-4 mr-2 text-gray-500" />
-        <h3 className="font-semibold text-gray-800">Filter Gigs</h3>
+        <Filter className="h-4 w-4 mr-2 text-gray-400" />
+        <h3 className="font-semibold text-gray-200">Filter Gigs</h3>
       </div>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-300 mb-1">
             Type
           </label>
           <Select 
             value={activeFilters.type} 
             onValueChange={(value) => handleFilterChange("type", value)}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-[#272729] border-[#343536] text-gray-200">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-[#272729] border-[#343536] text-gray-200">
               {gigTypes.map((type) => (
-                <SelectItem key={type.value} value={type.value}>
+                <SelectItem key={type.value} value={type.value} className="focus:bg-[#343536] focus:text-white">
                   {type.label}
                 </SelectItem>
               ))}
@@ -65,19 +65,19 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-300 mb-1">
             Location
           </label>
           <Select 
             value={activeFilters.location} 
             onValueChange={(value) => handleFilterChange("location", value)}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-[#272729] border-[#343536] text-gray-200">
               <SelectValue placeholder="Select location" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-[#272729] border-[#343536] text-gray-200">
               {locations.map((location) => (
-                <SelectItem key={location.value} value={location.value}>
+                <SelectItem key={location.value} value={location.value} className="focus:bg-[#343536] focus:text-white">
                   {location.label}
                 </SelectItem>
               ))}
@@ -86,39 +86,39 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-300 mb-1">
             Payment Status
           </label>
           <Select 
             value={activeFilters.paymentStatus} 
             onValueChange={(value) => handleFilterChange("paymentStatus", value)}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-[#272729] border-[#343536] text-gray-200">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Statuses</SelectItem>
-              <SelectItem value="secured">Payment Secured</SelectItem>
-              <SelectItem value="pending">Payment Pending</SelectItem>
+            <SelectContent className="bg-[#272729] border-[#343536] text-gray-200">
+              <SelectItem value="all" className="focus:bg-[#343536] focus:text-white">All Statuses</SelectItem>
+              <SelectItem value="secured" className="focus:bg-[#343536] focus:text-white">Payment Secured</SelectItem>
+              <SelectItem value="pending" className="focus:bg-[#343536] focus:text-white">Payment Pending</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-300 mb-1">
             Sort By
           </label>
           <Select 
             value={activeFilters.sortBy} 
             onValueChange={(value) => handleFilterChange("sortBy", value)}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-[#272729] border-[#343536] text-gray-200">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="recent">Most Recent</SelectItem>
-              <SelectItem value="payment">Highest Payment</SelectItem>
-              <SelectItem value="date">Upcoming Date</SelectItem>
+            <SelectContent className="bg-[#272729] border-[#343536] text-gray-200">
+              <SelectItem value="recent" className="focus:bg-[#343536] focus:text-white">Most Recent</SelectItem>
+              <SelectItem value="payment" className="focus:bg-[#343536] focus:text-white">Highest Payment</SelectItem>
+              <SelectItem value="date" className="focus:bg-[#343536] focus:text-white">Upcoming Date</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -148,7 +148,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
           <Button 
             variant="outline" 
             size="sm" 
-            className="text-xs"
+            className="text-xs bg-[#272729] border-[#343536] text-gray-300 hover:bg-[#343536] hover:text-white"
             onClick={() => {
               const resetFilters = {
                 type: "all",
