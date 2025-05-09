@@ -2,7 +2,7 @@
 Find quick gigs, earn on the go — a simple platform connecting students and local orgs for one-time jobs. 
 
 Read more at : https://aaromalonline.notion.site/Dozyo-1d91d429a96d80f18f9afc22c54f1637  
-Visit the site (prototyping) : https://aaromalonline.notion.site/Dozyo-1d91d429a96d80f18f9afc22c54f1637  
+Visit the site (prototyping) : https://dozyo.vercel.app/
 
 ___________________
 
