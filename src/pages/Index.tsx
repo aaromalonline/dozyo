@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { gigs as initialGigs, users } from "@/data/mockData";
 import { Gig } from "@/lib/types";
@@ -113,9 +114,9 @@ const Index = () => {
     <div className="min-h-screen flex flex-col bg-[#1A1A1A] text-gray-200">
       <style>{scrollbarStyles}</style>
       <Header />
-      <div className="max-w-screen-2xl mx-auto flex gap-x-12 px-4 lg:px-8 pt-6 w-full">
-        <Sidebar variant="inset">
-          <SidebarContent className="w-72 flex-shrink-0 bg-[#1E1E1E] border-r border-[#343536] overflow-y-auto">
+      <div className="flex-1 flex w-full">
+        <Sidebar variant="inset" collapsible="icon">
+          <SidebarContent className="w-72 max-w-[300px] flex-shrink-0 bg-[#1E1E1E] border-r border-[#343536] overflow-y-auto">
             <div className="p-3 space-y-3">
               <div className="space-y-3">
                 <FilterBar onFilterChange={handleFilterChange} />
@@ -169,7 +170,7 @@ const Index = () => {
             </div>
           </SidebarContent>
         </Sidebar>
-        <SidebarInset>
+        <SidebarInset className="flex-1">
           <div className="flex-1 min-w-0 p-3 overflow-y-auto">
             {filteredGigs.length > 0 ? (
               <div className="space-y-2">

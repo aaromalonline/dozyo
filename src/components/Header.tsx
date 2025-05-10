@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { PlusCircle, Search, User, History, MessageCircle, Compass, Info, Menu } from "lucide-react";
 import { useState } from "react";
@@ -20,7 +21,7 @@ const Header = () => {
         >
           <Menu className="h-5 w-5" />
         </Button>
-        <h1 className="text-xl font-bold text-white whitespace-nowrap flex items-center gap-1">
+        <h1 className="text-xl font-bold text-white whitespace-nowrap flex items-center gap-1 min-w-[80px]">
           do<span className="text-gig-purple">zyo</span>
         </h1>
 
@@ -35,7 +36,7 @@ const Header = () => {
           </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-4 flex-shrink-0">
           {isLoggedIn && (
             <>
               <Button
@@ -77,7 +78,7 @@ const Header = () => {
           </Button>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           {isLoggedIn ? (
             <>
               <Dialog>
