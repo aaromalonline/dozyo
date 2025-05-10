@@ -111,10 +111,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#1A1A1A] text-gray-200">
+    <div className="flex flex-col min-h-screen bg-[#1A1A1A] text-gray-200">
       <style>{scrollbarStyles}</style>
       <Header />
-      <div className="flex flex-1 w-full relative">
+      
+      <div className="flex flex-1 w-full">
         <Sidebar variant="inset" collapsible="icon">
           <SidebarContent className="w-64 md:w-72 max-w-[300px] flex-shrink-0 bg-[#1E1E1E] border-r border-[#343536] overflow-y-auto">
             <div className="p-3 space-y-3">
@@ -170,10 +171,11 @@ const Index = () => {
             </div>
           </SidebarContent>
         </Sidebar>
-        <SidebarInset className="flex-1">
-          <div className="flex-1 p-3 overflow-y-auto">
+        
+        <SidebarInset className="flex-1 overflow-hidden">
+          <div className="h-full overflow-y-auto p-4">
             {filteredGigs.length > 0 ? (
-              <div className="space-y-2 max-w-[1000px] mx-auto">
+              <div className="space-y-3 max-w-[1000px] mx-auto">
                 {filteredGigs.map(gig => (
                   <GigCard 
                     key={gig.id} 
@@ -193,6 +195,7 @@ const Index = () => {
           </div>
         </SidebarInset>
       </div>
+      
       <Footer />
     </div>
   );
