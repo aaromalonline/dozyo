@@ -26,15 +26,15 @@ const UserProfile = ({ user }: UserProfileProps) => {
   };
 
   return (
-    <Card className="bg-[#1E1E1E] border-[#343536]">
+    <Card className="bg-[#1E1E1E] border-[#343536] w-full">
       <CardHeader className="pb-2">
-        <div className="flex flex-col items-start justify-between">
+        <div className="flex flex-col items-start justify-between w-full">
           <div className="flex items-center space-x-3 w-full">
-            <Avatar className="h-10 w-10">
+            <Avatar className="h-10 w-10 flex-shrink-0">
               <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${user.name}`} />
               <AvatarFallback className="bg-[#272729] text-gray-200">{getInitials(user.name)}</AvatarFallback>
             </Avatar>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden min-w-0 flex-1">
               <div className="flex items-center">
                 <CardTitle className="text-base text-gray-200 truncate">{user.name}</CardTitle>
                 {user.type === "institution" && (

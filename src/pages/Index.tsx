@@ -111,12 +111,12 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#1A1A1A] text-gray-200">
+    <div className="flex flex-col min-h-screen bg-[#1A1A1A] text-gray-200 w-full">
       <style>{scrollbarStyles}</style>
       <Header />
       
-      <div className="flex flex-1 w-full">
-        <Sidebar variant="inset" collapsible="icon">
+      <div className="flex flex-1 w-full overflow-hidden">
+        <Sidebar variant="inset" collapsible="icon" className="z-20">
           <SidebarContent className="w-64 md:w-72 max-w-[300px] flex-shrink-0 bg-[#1E1E1E] border-r border-[#343536] overflow-y-auto">
             <div className="p-3 space-y-3">
               <div className="space-y-3">
@@ -172,10 +172,10 @@ const Index = () => {
           </SidebarContent>
         </Sidebar>
         
-        <SidebarInset className="flex-1 overflow-hidden">
-          <div className="h-full overflow-y-auto p-4">
+        <SidebarInset className="flex-1 overflow-hidden flex flex-col w-full">
+          <div className="flex-1 overflow-y-auto p-4 w-full">
             {filteredGigs.length > 0 ? (
-              <div className="space-y-3 max-w-[1000px] mx-auto">
+              <div className="space-y-3 max-w-[800px] mx-auto">
                 {filteredGigs.map(gig => (
                   <GigCard 
                     key={gig.id} 
@@ -185,7 +185,7 @@ const Index = () => {
                 ))}
               </div>
             ) : (
-              <div className="bg-[#1E1E1E] border border-[#343536] rounded-lg p-6 text-center max-w-md mx-auto">
+              <div className="bg-[#1E1E1E] border border-[#343536] rounded-lg p-6 text-center max-w-md mx-auto mt-8">
                 <h3 className="text-base font-medium mb-2 text-gray-200">No gigs found</h3>
                 <p className="text-sm text-gray-400">
                   Try adjusting your filters or check back later for new opportunities.
