@@ -1,16 +1,25 @@
-
 import { Button } from "@/components/ui/button";
-import { PlusCircle, Search, User, History, MessageCircle, Compass, Info } from "lucide-react";
+import { PlusCircle, Search, User, History, MessageCircle, Compass, Info, Menu } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import CreateGigForm from "./CreateGigForm";
+import { useSidebar } from "@/components/ui/sidebar";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { toggleSidebar } = useSidebar();
 
   return (
     <header className="sticky top-0 h-14 bg-[#1A1A1A] z-10 border-b border-[#343536]">
       <div className="h-full container max-w-7xl mx-auto px-4 flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="md:hidden text-gray-300 hover:text-white hover:bg-[#272729]"
+          onClick={toggleSidebar}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
         <h1 className="text-xl font-bold text-white whitespace-nowrap flex items-center gap-1">
           do<span className="text-gig-purple">zyo</span>
         </h1>
