@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 h-14 bg-[#1A1A1A] z-10 border-b border-[#343536]">
-      <div className="h-full container max-w-7xl mx-auto px-4 flex items-center gap-4">
+      <div className="h-full container max-w-[1400px] mx-auto flex items-center gap-4">
         <Button
           variant="ghost"
           size="sm"
